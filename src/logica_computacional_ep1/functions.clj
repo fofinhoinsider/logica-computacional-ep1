@@ -26,3 +26,20 @@
   (with-open [writer (io/writer fname)]
     (csv/write-csv writer matrix))
 )
+
+(defn get-transitive
+  [matrix]
+  ;; (map-indexed vector (map-indexed vector matrix))
+  ;; (map-indexed vector matrix)
+  (let [list-of-indexes []]
+  (for [i (range (count matrix))]
+    (for [j (range (count (nth matrix i)))]
+      (if true
+        (println "True")
+        (conj! list-of-indexes [i j])
+      )
+    )
+  )
+  (println list-of-indexes)
+  )
+)

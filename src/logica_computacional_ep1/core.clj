@@ -1,6 +1,6 @@
 (ns logica-computacional-ep1.core
   (:gen-class) 
-  (:require [logica-computacional-ep1.functions :refer [get-reflexive take-csv]]))
+  (:require [logica-computacional-ep1.functions :refer [get-reflexive take-csv] :as functions]))
 
 
 
@@ -11,8 +11,8 @@
   [& args]
 
   (let [matrix (take-csv (nth args 1))]
-     (doseq [line (get-reflexive matrix)]
-      (println line)))
-    ;; (write-to-csv-file matrix "out.csv")
-  
+    ;;  (doseq [line (get-reflexive matrix)]
+    ;;   (println line))
+     (functions/write-to-csv-file (get-reflexive matrix) "out.csv")
+      )
   )
