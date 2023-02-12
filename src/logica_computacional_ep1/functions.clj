@@ -18,5 +18,11 @@
    (get-reflexive matrix 0)) 
   ([matrix index]
    (if (= index (count matrix))
-     (matrix)
+     matrix
      (get-reflexive (insert-value matrix index index 1) (inc index)))))
+
+(defn write-to-csv-file
+  [matrix fname]
+  (with-open [writer (io/writer fname)]
+    (csv/write-csv writer matrix))
+)

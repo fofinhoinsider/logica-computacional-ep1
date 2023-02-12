@@ -9,9 +9,10 @@
    represents the graph to a relation and returns the reflexive and transitive
    closures"
   [& args]
-  ; (print (take-csv (nth args 1)))
-  
+
   (let [matrix (take-csv (nth args 1))]
-     (println "== final: " (get-reflexive matrix)))
+     (doseq [line (get-reflexive matrix)]
+      (println line)))
+    ;; (write-to-csv-file matrix "out.csv")
   
   )
