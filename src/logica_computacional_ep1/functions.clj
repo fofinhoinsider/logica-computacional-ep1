@@ -13,13 +13,18 @@
   [matrix line column value]
   (assoc-in (vec matrix) [line column] value))
 
+(defn insert-values
+  [matrix line-column-list value]
+  (println "insert values: " matrix line-column-list value)
+  (reduce (fn [result ordered-pair] (insert-value result (nth ordered-pair 0) (nth ordered-pair 1) value)) matrix line-column-list))
+
 (defn get-reflexive
   ([matrix]
    (get-reflexive matrix 0))
   ([matrix index]
    (if (= index (count matrix))
      matrix
-     (get-reflexive (insert-value matrix index index 1) (inc index)))))
+     (recur (insert-value matrix index index 1) (inc index)))))
 
 (defn write-to-csv-file
   [matrix fname]
@@ -43,15 +48,15 @@
 
 (defn get-transitive
   ([matrix]
-   (get-transitive matrix (get-indexes-of-true-values matrix) 0 1))
-  ([matrix indexes i j]
+   (get-transitive matrix (get-indexes-of-true-values matrix) 0))
+  ([matrix indexes i]
    (if (= i (count indexes))
      matrix
-     (if (= (nth (nth indexes i) 1) (nth (nth indexes j) 0))
-       (get-transitive (insert-value
-                        matrix
-                        (nth (nth indexes i) 0)
-                        (nth (nth indexes j) 1)
-                        1) indexes i (inc j))
-       ()))))
+     (let [ordered-pair (nth indexes i)
+           _ (println "ordered pair:" ordered-pair)
+           to-fill-indexes (map (fn [[_ column]] [(nth ordered-pair 0) column]) (filter #(= (nth ordered-pair 1) (nth % 0)) indexes))
+           values (insert-values matrix to-fill-indexes 1)]
+       (println "tofill : " to-fill-indexes)
+       (println "values : " values)
+       (recur values indexes (inc i))))))
 
