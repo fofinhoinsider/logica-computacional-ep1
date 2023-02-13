@@ -1,6 +1,7 @@
 (ns logica-computacional-ep1.core
-  (:gen-class) 
-  (:require [logica-computacional-ep1.functions :refer [get-reflexive take-csv] :as functions]))
+  (:gen-class)
+  (:require [logica-computacional-ep1.functions :refer [get-reflexive
+                                                        get-transitive take-csv] :as functions]))
 
 
 
@@ -10,9 +11,8 @@
    closures"
   [& args]
 
-  (let [matrix (take-csv (nth args 1))]
-    ;;  (doseq [line (get-reflexive matrix)]
-    ;;   (println line))
-     (functions/write-to-csv-file (get-reflexive matrix) "out.csv")
-      )
-  )
+  (functions/write-to-csv-file (-> args
+                                   (nth 1)
+                                   take-csv
+                                   get-reflexive
+                                   get-transitive) "src/logica_computacional_ep1/reflexive_transitive_closure.csv"))
