@@ -9,4 +9,8 @@ Ir para o diretório raiz do projeto: "logica-compuational-ep1".
 Utilizar o comando:
 lein run logica-computacional-ep1.core "./src/logica_computacional_ep1/matrix.csv"
 
-Os fechos reflexivo e transitivo serão representados, respectivamente, nas matrizes nos arquivos "out_reflexive.csv" e "out_transitive.csv"
+Os fechos reflexivo e transitivo serão representados, respectivamente, nas matrizes nos arquivos "out_reflexive.csv" e "out_transitive.csv" dentro da pasta "src/logica_computacional_ep1"
+
+## Relatório
+
+Com esse projeto foi possível entender melhor a teoria de conjuntos em respeito as relações (...)
