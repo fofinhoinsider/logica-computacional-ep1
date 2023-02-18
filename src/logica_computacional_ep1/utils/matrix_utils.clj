@@ -1,4 +1,4 @@
-(ns logica-computacional-ep1.utils.matrix)
+(ns logica-computacional-ep1.utils.matrix-utils)
 
 (defn insert-value
   [matrix line column value]

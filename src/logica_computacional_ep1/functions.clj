@@ -1,5 +1,5 @@
 (ns logica-computacional-ep1.functions
-  (:require [logica-computacional-ep1.utils.matrix :as matrix]))
+  (:require [logica-computacional-ep1.utils.matrix-utils :as matrix]))
 
 (defn get-reflexive
   ([roster size]

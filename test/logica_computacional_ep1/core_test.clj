@@ -2,7 +2,7 @@
   (:require [clojure.string :as str]
             [clojure.test :refer [deftest testing is]]
             [logica-computacional-ep1.core :refer [-main]]
-            [logica-computacional-ep1.utils.file :as file]))
+            [logica-computacional-ep1.utils.file-utils :as file]))
 
 (def data-folder "test/logica_computacional_ep1/data/")
 

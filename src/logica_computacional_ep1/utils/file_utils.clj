@@ -1,4 +1,4 @@
-(ns logica-computacional-ep1.utils.file
+(ns logica-computacional-ep1.utils.file-utils
   (:require [clojure.data.csv :as csv]
             [clojure.java.io :as io]))
 

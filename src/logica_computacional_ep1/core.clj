@@ -2,10 +2,10 @@
   (:gen-class)
   (:require [logica-computacional-ep1.functions :refer [get-reflexive
                                                         get-transitive] :as functions]
-            [logica-computacional-ep1.utils.file :refer [take-csv
-                                                         write-to-csv-file!]]
-            [logica-computacional-ep1.utils.matrix :refer [matrix->roster
-                                                           roster->matrix]]))
+            [logica-computacional-ep1.utils.file-utils :refer [take-csv
+                                                               write-to-csv-file!]]
+            [logica-computacional-ep1.utils.matrix-utils :refer [matrix->roster
+                                                                 roster->matrix]]))
 
 
 
