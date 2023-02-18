@@ -20,10 +20,7 @@
                    take-csv)
         size (count matrix)
         roster (matrix->roster matrix)
-        _ (println "== roster: " roster)
         transitive (get-transitive roster)
-        _ (println "== transitive: " transitive)
         reflexive-transitive (get-reflexive transitive size)
-        _ (println "== reflexive-transitive: " reflexive-transitive)
         output-matrix (roster->matrix reflexive-transitive size)]
     (write-to-csv-file! output-matrix (nth args 2))))
