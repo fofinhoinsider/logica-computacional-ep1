@@ -1,18 +1,29 @@
 (ns logica-computacional-ep1.core
   (:gen-class)
   (:require [logica-computacional-ep1.functions :refer [get-reflexive
-                                                        get-transitive take-csv] :as functions]))
+                                                        get-transitive] :as functions]
+            [logica-computacional-ep1.utils.file :refer [take-csv
+                                                         write-to-csv-file!]]
+            [logica-computacional-ep1.utils.matrix :refer [matrix->roster
+                                                           roster->matrix]]))
 
 
 
 (defn -main
-  "This function takes the csv file name containing a matrix that
-   represents the graph to a relation and returns the reflexive and transitive
-   closures"
+  "This function takes the input csv file name containing a matrix that
+   represents the graph to a relation and writes the reflexive and transitive
+   closures to the output csv provided"
   [& args]
 
-  (functions/write-to-csv-file (-> args
-                                   (nth 1)
-                                   take-csv
-                                   get-reflexive
-                                   get-transitive) "src/logica_computacional_ep1/reflexive_transitive_closure.csv"))
+  (let [matrix (-> args
+                   (nth 1)
+                   take-csv)
+        size (count matrix)
+        roster (matrix->roster matrix)
+        _ (println "== roster: " roster)
+        transitive (get-transitive roster)
+        _ (println "== transitive: " transitive)
+        reflexive-transitive (get-reflexive transitive size)
+        _ (println "== reflexive-transitive: " reflexive-transitive)
+        output-matrix (roster->matrix reflexive-transitive size)]
+    (write-to-csv-file! output-matrix (nth args 2))))

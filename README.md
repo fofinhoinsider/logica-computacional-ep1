@@ -2,14 +2,32 @@
 
 Primeiro Exercíco-Programa da Disciplina de Lógica Computacional
 
-## Usage
+## Instalação
 
-No arquivo "matrix.csv", preencher com as informações da matrix que deseja-se testar.
-Ir para o diretório raiz do projeto: "logica-compuational-ep1".
+Para executar o projeto, você deve ter o `Clojure` e `Lein` instalados em seu computador. Os passos de instalação podem ser encontrados nas páginas oficiais:
+
+[Como instalar Clojure](https://clojure.org/guides/install_clojure)
+
+[Como instalar Lein](https://leiningen.org)
+
+
+## Como executar
+
+No arquivo "matrix.csv", preencher com a matriz que representa a relação que deseja obter o fecho reflexivo e transitivo.
+
 Utilizar o comando:
-lein run logica-computacional-ep1.core "./src/logica_computacional_ep1/matrix.csv"
+```
+lein run logica-computacional-ep1.core "matrix.csv" "reflexive_transitive_closure.csv"
+```
 
-Os fechos reflexivo e transitivo serão representados, respectivamente, nas matrizes nos arquivos "out_reflexive.csv" e "out_transitive.csv" dentro da pasta "src/logica_computacional_ep1"
+O fecho reflexivo e transitivo será representado na matriz em "reflexive_transitive_closure.csv".
+
+Você pode executar os testes EndToEnd pelo comando
+```
+lein test
+```
+
+Caso queira incluir novos tests, insira um novo arquivo de entrada na pasta `test/logica_computacional_ep1/data/input` com o nome matrix`{N}`.csv e um arquivo de saída em `test/logica_computacional_ep1/data/expected_output` nomeado expected_output`{N}`.csv com a saída esperada. Execute o comando de teste novamente e verifique se o teste passa para seu caso.
 
 ## Relatório
 
