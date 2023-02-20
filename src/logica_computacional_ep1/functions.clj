@@ -5,9 +5,12 @@
   ([roster size]
    (get-reflexive roster size 0))
   ([roster size index]
-   (if (and (= index size) (not (contains? roster [index index])))
+   (if
+    (= index size)
      roster
-     (recur (conj roster [index index]) size (inc index)))))
+     (if (contains? roster [index index])
+       (recur roster size (inc index))
+       (recur (conj roster [index index]) size (inc index))))))
 
 (defn get-transitive
   ([roster]
